@@ -319,33 +319,39 @@
 /* ==========================================================================
    12. COVER PHOTO FRAME & MUSIC CONTROLLER
    ========================================================================== */
-.cover-photo-frame {
+.cover-photo-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 25px auto 40px;
+    gap: 20px;
+    margin: 25px 0 30px;
     opacity: 0;
     transform: scale(0.9);
     animation: elegantZoomIn 1.5s forwards 0.8s;
 }
-.photo-wrapper {
-    width: 110px;
-    height: 150px;
-    border-radius: 60px 60px 15px 15px;
-    overflow: hidden;
-    border: 3px solid var(--accent-gold);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+.cover-photo-frame {
+    width: 120px;
+    height: 160px;
+    border-radius: 100px 100px 15px 15px;
+    border: 2px solid var(--accent-gold);
+    padding: 4px;
+    background: var(--bg-surface-solid);
+    box-shadow: 0 10px 25px var(--shadow-glow-dim);
     position: relative;
     z-index: 1;
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
 }
-.photo-wrapper:hover { transform: scale(1.15); z-index: 3; box-shadow: 0 15px 35px var(--shadow-glow-bright); }
-.photo-wrapper img {
+.cover-photo-frame:hover {
+    transform: scale(1.15);
+    z-index: 3;
+    box-shadow: 0 15px 35px var(--shadow-glow-bright);
+}
+.cover-photo-frame img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
+    border-radius: 100px 100px 10px 10px;
+    background-color: var(--border-color);
 }
 
 @keyframes elegantZoomIn { to { opacity: 1; transform: scale(1); } }
