@@ -372,29 +372,71 @@
             const rsvpForm = document.getElementById("wedding-rsvp-form");
             const boardWrapper = document.getElementById("wishes-display-board");
             
-            const loadWishes = () => {
-                const wishes = JSON.parse(localStorage.getItem("lux_wedding_wishes")) || [];
-                boardWrapper.innerHTML = "";
-                wishes.slice().reverse().forEach(w => {
-                    const bg = w.status === "Hadir" ? "var(--accent-gold)" : "var(--bg-surface-solid)";
-                    const txt = w.status === "Hadir" ? "#FFFFFF" : "var(--text-main)";
-                    boardWrapper.innerHTML += `<div class="wish-card-item"><div class="wish-meta-line"><span class="wish-author">${w.name}</span><span class="wish-badge" style="background:${bg}; color:${txt}; border: 1px solid var(--accent-gold);">${w.status}</span></div><p class="wish-message-body">${w.msg}</p></div>`;
-                });
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyifYfQ-5aojqYYm2Kvdg4dz07YN41Xwsm8LWxdweTTwUymD72fZtAp7KpVDERliBHf/exec';
+            
+            const loadWishes = async () => {
+                boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; font-style: italic; color: var(--text-muted);'>Memuat doa & ucapan...</p>";
+                try {
+                    const response = await fetch(scriptURL);
+                    const result = await response.json();
+                    
+                    if (result.status === 'success' && result.data && result.data.length > 0) {
+                        boardWrapper.innerHTML = "";
+                        result.data.slice().reverse().forEach(w => {
+                            const bg = w.status.includes("Hadir") ? "var(--accent-gold)" : "var(--bg-surface-solid)";
+                            const txt = w.status.includes("Hadir") ? "#FFFFFF" : "var(--text-main)";
+                            boardWrapper.innerHTML += `<div class="wish-card-item"><div class="wish-meta-line"><span class="wish-author">${w.name}</span><span class="wish-badge" style="background:${bg}; color:${txt}; border: 1px solid var(--accent-gold);">${w.status}</span></div><p class="wish-message-body">${w.msg}</p></div>`;
+                        });
+                    } else {
+                        boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; color:var(--text-muted);'>Belum ada ucapan, jadilah yang pertama!</p>";
+                    }
+                } catch (error) {
+                    console.error('Error loading wishes:', error);
+                    boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; color:red;'>Gagal memuat ucapan dari server.</p>";
+                }
             };
 
-            rsvpForm.addEventListener("submit", (e) => {
+            rsvpForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
+                const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerText;
+                
                 const data = {
                     name: document.getElementById("guest-form-name").value,
                     status: document.getElementById("guest-form-status").value,
                     msg: document.getElementById("guest-form-msg").value
                 };
+                
                 if(data.name && data.status && data.msg) {
-                    const wishes = JSON.parse(localStorage.getItem("lux_wedding_wishes")) || [];
-                    wishes.push(data); localStorage.setItem("lux_wedding_wishes", JSON.stringify(wishes));
-                    rsvpForm.reset(); loadWishes();
+                    submitBtn.innerText = "Mengirim...";
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = "0.7";
+                    
+                    try {
+                        const formData = new URLSearchParams();
+                        formData.append('name', data.name);
+                        formData.append('status', data.status);
+                        formData.append('msg', data.msg);
+                        
+                        await fetch(scriptURL, { 
+                            method: 'POST', 
+                            body: formData 
+                        });
+                        
+                        rsvpForm.reset();
+                        await loadWishes();
+                        alert("Terima kasih atas doa & ucapan Anda!");
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        alert("Terjadi kesalahan saat mengirim. Silakan coba lagi.");
+                    } finally {
+                        submitBtn.innerText = originalBtnText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = "1";
+                    }
                 }
             });
+            
             loadWishes();
         });
     </script>
