@@ -316,3 +316,71 @@
             #mobile-bottom-nav { display: flex; } 
             #app-master-footer { padding-bottom: 140px; } 
         }
+/* ==========================================================================
+   12. COVER PHOTO FRAME & MUSIC CONTROLLER
+   ========================================================================== */
+.cover-photo-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto 40px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: elegantZoomIn 1.5s forwards 0.8s;
+}
+.photo-wrapper {
+    width: 110px;
+    height: 150px;
+    border-radius: 60px 60px 15px 15px;
+    overflow: hidden;
+    border: 3px solid var(--accent-gold);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.photo-wrapper:first-child { transform: rotate(-8deg); z-index: 2; margin-right: -25px; }
+.photo-wrapper:last-child { transform: rotate(8deg); margin-left: -25px; }
+.photo-wrapper:hover { transform: scale(1.15) rotate(0deg); z-index: 3; box-shadow: 0 15px 35px var(--shadow-glow-bright); }
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+@keyframes elegantZoomIn { to { opacity: 1; transform: scale(1); } }
+
+#music-controller {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--bg-surface);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9500;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--shadow-glow-bright);
+    transition: var(--transition-smooth);
+    opacity: 0;
+    transform: translateY(20px);
+}
+#music-controller.visible { opacity: 1; transform: translateY(0); }
+#music-controller svg { width: 24px; height: 24px; fill: var(--accent-gold-dark); transition: var(--transition-smooth); }
+#music-controller:hover { background: var(--border-color); transform: scale(1.1); }
+#music-controller.playing svg { animation: spinSlow 3s linear infinite; }
+
+@media (max-width: 768px) {
+    #music-controller { bottom: 85px; left: 15px; width: 40px; height: 40px; }
+    #music-controller svg { width: 20px; height: 20px; }
+}
+
+/* Enhancing Reveal Animation */
+.reveal-element { opacity: 0; transform: translateY(40px) scale(0.98); transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); }
+.reveal-element.activated { opacity: 1; transform: translateY(0) scale(1); }
