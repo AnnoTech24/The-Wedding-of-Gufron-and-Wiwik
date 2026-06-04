@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Premium - Gufron & Wiwik</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+    <div id="cursor-glow"></div>
+
+    <div id="preloader">
+        <h2 class="preloader-title">Bismillahirrahmanirrahim</h2>
+        <div class="preloader-spinner"></div>
+    </div>
+
+    <div id="cover-page">
+        <div class="cover-container">
+            <h2 class="cover-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</h2>
+            <p class="cover-subtitle">The Wedding of</p>
+            <h1 class="cover-title">Gufron & Wiwik</h1>
+            
+            <div class="cover-guest">
+                <p>Kepada Yang Terhormat<br>Bapak/Ibu/Saudara/i</p>
+                <h3 id="url-guest-target">Tamu Undangan</h3>
+            </div>
+            
+            <button id="app-enter-trigger" class="btn-luxury">Buka Undangan</button>
+            
+            <div class="scroll-indicator">
+                <svg viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-wrapper">
+
+        <nav id="main-navbar">
+            <div class="nav-logo">G&W</div>
+            <div class="nav-links-container">
+                <a href="#home-section" class="nav-link active">Home</a>
+                <a href="#mempelai-section" class="nav-link">Mempelai</a>
+                <a href="#countdown-section" class="nav-link">Countdown</a>
+                <a href="#acara-section" class="nav-link">Akad</a>
+                <a href="#location-section" class="nav-link">Lokasi</a>
+                <a href="#rsvp-section" class="nav-link">RSVP</a>
+            </div>
+            <div style="display:flex; align-items:center; gap:15px;">
+                <button class="theme-toggle" id="theme-toggle-btn" title="Toggle Mode">
+                    <svg viewBox="0 0 24 24" id="theme-icon"><path d="M12,18C11.11,18 10.26,17.8 9.5,17.45C11.56,16.5 13,14.42 13,12C13,9.58 11.56,7.5 9.5,6.55C10.26,6.2 11.11,6 12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31L23.31,12L20,8.69Z"/></svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- DESKTOP SIDEBAR -->
+        <div id="desktop-sidebar">
+            <div class="sidebar-dot" onclick="document.querySelector('#home-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg>
+                <span class="sidebar-tooltip">Home</span>
+            </div>
+            <div class="sidebar-dot" onclick="document.querySelector('#acara-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.9 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/></svg>
+                <span class="sidebar-tooltip">Akad</span>
+            </div>
+            <div class="sidebar-dot" onclick="document.querySelector('#location-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4M12,18C8.33,18 5.33,15.5 5.33,13C5.33,10.5 8.33,8 12,8C15.67,8 18.67,10.5 18.67,13C18.67,15.5 15.67,18 12,18Z"/></svg>
+                <span class="sidebar-tooltip">Maps</span>
+            </div>
+            <div class="sidebar-dot" onclick="document.querySelector('#rsvp-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18Z"/></svg>
+                <span class="sidebar-tooltip">RSVP</span>
+            </div>
+        </div>
+
+        <!-- 1. HOME -->
+        <section class="app-section reveal-element" id="home-section" style="padding-top:100px;">
+            <div class="glass-panel" style="padding: 50px 30px;">
+                <p class="quote-arabic-text">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+                <p class="quote-translation">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang."</p>
+                <p style="margin-top:10px; font-weight: 500; color: var(--accent-gold-dark);"> (QS. Ar-Rum: 21)</p>
+            </div>
+            <div class="section-divider"><svg viewBox="0 0 24 24"><path d="M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6M11,10V14H13V10H11M11,16V18H13V16H11Z"/></svg></div>
+        </section>
+
+        <!-- 2. MEMPELAI -->
+        <section class="app-section reveal-element" id="mempelai-section">
+            <h2 class="section-header-title font-serif">Mempelai Pernikahan</h2>
+            <p class="section-header-sub">Memohon Ridho Allah SWT Menyatukan Dua Jiwa</p>
+            <div class="mempelai-grid">
+                <div class="glass-panel mempelai-card reveal-element">
+                    <p class="mempelai-label">Mempelai Pria</p>
+                    <h3 class="mempelai-fullname font-serif">Gufron Maksum</h3>
+                    <p class="mempelai-quote">"Membangun rukun di usia matang adalah tentang ketenangan, pemahaman mendalam, dan niat ibadah murni semata-mata mengharap ridho-Nya."</p>
+                </div>
+                <div class="glass-panel mempelai-card reveal-element" style="transition-delay: 0.1s;">
+                    <p class="mempelai-label">Mempelai Wanita</p>
+                    <h3 class="mempelai-fullname font-serif">Wiwik Widyawati</h3>
+                    <p class="mempelai-quote">"Pernikahan khidmat adalah pelabuhan damai tempat kita melangkah beriringan menggapai jannah bersama dalam ikatan suci yang abadi."</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" style="margin-bottom: 0;"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4Z"/></svg></div>
+
+        <!-- 3. COUNTDOWN -->
+        <section class="app-section reveal-element" id="countdown-section">
+            <h2 class="section-header-title font-serif">Menghitung Hari Bahagia</h2>
+            <p class="section-header-sub">Insya Allah Menuju Ikatan Suci</p>
+            <div class="countdown-row" id="app-countdown-timer">
+                <div class="countdown-unit-box"><span id="timer-days">00</span><p>Hari</p></div>
+                <div class="countdown-unit-box"><span id="timer-hours">00</span><p>Jam</p></div>
+                <div class="countdown-unit-box"><span id="timer-minutes">00</span><p>Menit</p></div>
+                <div class="countdown-unit-box"><span id="timer-seconds">00</span><p>Detik</p></div>
+            </div>
+        </section>
+
+        <!-- 4. PROSESI KHIDMAT (AKAD) -->
+        <section class="app-section reveal-element" id="acara-section">
+            <h2 class="section-header-title font-serif">Prosesi Khidmat</h2>
+            <p class="section-header-sub">Pelaksanaan Akad Nikah</p>
+            
+            <div class="acara-grid">
+                <div class="glass-panel acara-card reveal-element">
+                    <h3 class="acara-title font-serif">Akad Nikah</h3>
+                    <div class="section-divider" style="margin: 15px auto;"></div>
+                    <p><strong>Hari / Tanggal:</strong></p>
+                    <p class="acara-datetime">Minggu, 21 Juni 2026</p>
+                    <p><strong>Waktu Pelaksanaan:</strong></p>
+                    <p style="margin-bottom: 20px;">08:00 WIB - Selesai</p>
+                    <p><strong>Tempat Pelaksanaan:</strong></p>
+                    <p>Masjid Agung Al-Akbar Surabaya<br>Jl. Masjid Al-Akbar Utara No.1, Surabaya</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. LOKASI -->
+        <section class="app-section reveal-element" id="location-section">
+            <h2 class="section-header-title font-serif">Lokasi Penyelenggaraan</h2>
+            <p class="section-header-sub">Petunjuk Denah Lokasi Akad Nikah</p>
+            <div class="location-container-box">
+                <div class="glass-panel location-info-card">
+                    <div class="location-icon-wrapper"><svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4Z"/></svg></div>
+                    <h3 class="font-serif" style="font-size:1.6rem; margin-bottom:15px; color: var(--accent-gold-dark);">Masjid Agung Al-Akbar</h3>
+                    <p style="font-size:0.95rem; color:var(--text-muted); margin-bottom:25px;">Kawasan Masjid Agung Al-Akbar Utara No.1, Surabaya</p>
+                    <button class="btn-luxury" onclick="window.open('https://www.google.com/maps/dir//Masjid+Nasional+Al-Akbar+Surabaya,+Jl.+Masjid+Al-AkbarTimur+No.1,+Pagesangan,+Kec.+Jambangan,+Surabaya,+Jawa+Timur+60233/@-7.297944,112.7271303,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x2dd7fba9cfb6dfab:0x6fe7210ef241206!2m2!1d112.7151183!2d-7.3363793?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D', '_blank')">Buka Google Maps</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ADAB MENGUNJUNGI MASJID -->
+      <section class="app-section reveal-element" id="adab-section">
+            <div class="glass-panel adab-container">
+                <h3 class="adab-title" style="font-size: 1.6rem; color: var(--accent-gold-dark); margin-bottom: 15px; font-family: var(--font-serif); text-transform: uppercase; letter-spacing: 1px;">Adab Mengunjungi Masjid</h3>
+                <div class="section-divider" style="margin: 15px auto; max-width: 120px;"></div>
+                
+                <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.8; text-align: center;">
+                    Sebagai bentuk penghormatan terhadap kesucian Masjid Al-Akbar, kami memohon perkenan Bapak/Ibu/Saudara/i <strong>(termasuk tamu Non-Muslim)</strong> untuk mengenakan pakaian yang rapi dan tertutup (mengenakan celana panjang atau rok panjang). 
+                </p>
+
+                <!-- KOTAK HIGHLIGHT KHUSUS TUDUNG / KERUDUNG -->
+                <div style="background: var(--shadow-glow-dim); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-gold); padding: 15px 20px; margin: 20px auto; border-radius: 8px; max-width: 500px; text-align: left;">
+                    <p style="font-size: 0.95rem; color: var(--accent-gold-dark); font-weight: 500; margin: 0; line-height: 1.6;">
+                        <strong style="font-weight: 600; letter-spacing: 1px; display: block; margin-bottom: 5px;">HIMBAUAN KHUSUS:</strong>
+                        Bagi tamu wanita, dimohon kesediaannya untuk mengenakan penutup kepala (tudung, kerudung, atau selendang) selama berada di area masjid.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GALLERY ORNAMENTS (Pembatas tipis) -->
+        <section class="app-section reveal-element" style="padding: 20px;">
+            <div class="decorative-gallery-container">
+                <svg class="gallery-svg-ornament" viewBox="0 0 100 100"><polygon points="50,5 95,50 50,95 5,50" /><circle cx="50" cy="50" r="30" /></svg>
+                <svg class="gallery-svg-ornament" viewBox="0 0 100 100" style="animation-delay:2s; width:80px; height:80px;"><polygon points="50,2 98,50 50,98 2,50" /><polygon points="50,15 85,50 50,85 15,50" transform="rotate(45 50 50)" /></svg>
+                <svg class="gallery-svg-ornament" viewBox="0 0 100 100" style="animation-delay:4s;"><polygon points="50,5 95,50 50,95 5,50" /><circle cx="50" cy="50" r="30" /></svg>
+            </div>
+        </section>
+
+        <span id="highlight-anchor" style="position:absolute; transform:translateY(-100px);"></span>
+        
+        <!-- 7. TIDAK MENERIMA HADIAH -->
+        <section class="app-section reveal-element" id="no-gift-section" style="padding-top: 20px;">
+            <div class="luxury-highlight-container">
+                
+                <!-- SVG STATIC AMPLOP DICORET (GOLD & MONOCHROME) -->
+                <svg class="no-gift-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="26" y="38" width="48" height="28" rx="2" class="envelope-line" />
+                    <path d="M26 38 L50 50 L74 38" class="envelope-line" />
+                    <line x1="25" y1="25" x2="75" y2="75" class="slash-line" style="stroke-width: 5;" />
+                    <line x1="75" y1="25" x2="25" y2="75" class="slash-line" style="stroke-width: 5;" />
+                    <circle cx="50" cy="50" r="44" class="slash-line" style="stroke-width: 4;" />
+                </svg>
+
+                <p class="highlight-description">
+                    Kehadiran, doa, dan restu tulus Bapak/Ibu/Saudara/i merupakan hadiah terindah bagi kami.
+            </div>
+        </section>
+
+        <!-- 8. RSVP & UCAPAN -->
+        <section class="app-section reveal-element" id="rsvp-section">
+            <h2 class="section-header-title font-serif">RSVP & Ucapan Doa</h2>
+            <p class="section-header-sub">Kehormatan Bagi Kami Atas Doa Anda</p>
+            <div class="glass-panel rsvp-form-wrapper">
+                <form id="wedding-rsvp-form">
+                    <div class="form-row-group">
+                        <label class="form-label-custom" for="guest-form-name">Nama Lengkap</label>
+                        <input type="text" id="guest-form-name" class="form-input-field" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    <div class="form-row-group">
+                        <label class="form-label-custom" for="guest-form-status">Konfirmasi Kehadiran</label>
+                        <select id="guest-form-status" class="form-input-field" required>
+                            <option value="" disabled selected>Pilih status kehadiran</option>
+                            <option value="Hadir">Insya Allah Hadir</option>
+                            <option value="Tidak Hadir">Berhalangan Hadir</option>
+                        </select>
+                    </div>
+                    <div class="form-row-group">
+                        <label class="form-label-custom" for="guest-form-msg">Untaian Doa & Ucapan</label>
+                        <textarea id="guest-form-msg" class="form-input-field" rows="4" placeholder="Tuliskan doa restu mulia Anda..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-luxury" style="width:100%;">Kirim Doa Restu</button>
+                </form>
+                <div id="wishes-display-board"></div>
+            </div>
+        </section>
+
+        <section class="app-section reveal-element" style="padding-bottom:60px;">
+            <p class="closing-arabic-seal">بَارَكَ اللَّهُ لَكُمَا وَبَارَكَ عَلَيْكُمَا وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+            <p style="font-size:1.1rem; font-weight:500; margin-bottom:15px;">Barakallahu lakuma wa baraka ‘alaikuma wa jama’a bainakuma fii khair</p>
+            <p style="max-width:650px; margin:0 auto; font-size: 0.95rem;">Ungkapan terima kasih yang tulus dari lubuk hati kami atas perkenan langkah dan keikhlasan doa restu yang Bapak/Ibu berikan.</p>
+        </section>
+
+        <footer id="app-master-footer">
+            <div class="footer-logo">Gufron & Wiwik</div>
+            <p style="letter-spacing:2px; font-size:0.85rem; text-transform:uppercase; opacity:0.8; color: var(--text-muted);">Minggu, 21 Juni 2026</p>
+            
+            <!-- ANNO.TECH WATERMARK SECTION -->
+            <div class="watermark-container">
+                <p class="watermark-text">
+                    Design by <span class="watermark-brand">Anno.Tech</span>
+                </p>
+            </div>
+        </footer>
+
+        <!-- MENU BAWAH KHUSUS MOBILE / ANDROID -->
+        <div id="mobile-bottom-nav">
+            <div class="bottom-nav-item active" onclick="document.querySelector('#home-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg>
+                <span>Home</span>
+            </div>
+            <div class="bottom-nav-item" onclick="document.querySelector('#acara-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.9 20.1,3 19,3H18V1M17,12H12V17H17V12Z"/></svg>
+                <span>Akad</span>
+            </div>
+            <div class="bottom-nav-item" onclick="document.querySelector('#location-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A3,3 0 0,1 15,7A3,3 0 0,1 12,10A3,3 0 0,1 9,7A3,3 0 0,1 12,4M12,18C8.33,18 5.33,15.5 5.33,13C5.33,10.5 8.33,8 12,8C15.67,8 18.67,10.5 18.67,13C18.67,15.5 15.67,18 12,18Z"/></svg>
+                <span>Maps</span>
+            </div>
+            <div class="bottom-nav-item" onclick="document.querySelector('#rsvp-section').scrollIntoView();">
+                <svg viewBox="0 0 24 24"><path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18Z"/></svg>
+                <span>RSVP</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT ENGINE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            setTimeout(() => {
+                const preloader = document.getElementById("preloader");
+                preloader.style.opacity = "0";
+                setTimeout(() => preloader.style.display = "none", 1000);
+            }, 1800);
+
+            const urlParameters = new URLSearchParams(window.location.search);
+            const queryGuestName = urlParameters.get('to');
+            
+            let pathGuestName = window.location.pathname.split('/').pop();
+            if (pathGuestName && pathGuestName !== 'index.html' && pathGuestName !== '') {
+                pathGuestName = decodeURIComponent(pathGuestName).replace(/-/g, ' ');
+            } else {
+                pathGuestName = null;
+            }
+
+            const guestName = pathGuestName || (queryGuestName ? decodeURIComponent(queryGuestName).replace(/-/g, ' ') : null);
+
+            if (guestName) { 
+                document.getElementById('url-guest-target').textContent = guestName; 
+            }
+
+            document.getElementById("app-enter-trigger").addEventListener("click", () => {
+                const coverPage = document.getElementById("cover-page");
+                const mainWrapper = document.getElementById("main-wrapper");
+                const navbar = document.getElementById("main-navbar");
+                
+                coverPage.style.transform = "translateY(-100vh)";
+                coverPage.style.opacity = "0";
+                mainWrapper.style.display = "block";
+                setTimeout(() => {
+                    mainWrapper.style.opacity = "1";
+                    navbar.style.top = "20px";
+                    navbar.classList.add("sticky");
+                    scrollRevealHandler();
+                }, 400);
+                setTimeout(() => coverPage.style.display = "none", 1200);
+            });
+
+            const scrollProgressBar = document.getElementById("scroll-progress");
+            const revealableItems = document.querySelectorAll(".reveal-element");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const bottomNavLinks = document.querySelectorAll(".bottom-nav-item");
+
+            const scrollRevealHandler = () => {
+                const currentScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeightCalculated = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                if (scrollHeightCalculated > 0) { scrollProgressBar.style.width = ((currentScrollTop / scrollHeightCalculated) * 100) + "%"; }
+
+                revealableItems.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 50 && rect.bottom > 0) { 
+                        element.classList.add("activated"); 
+                    } else {
+                        element.classList.remove("activated"); 
+                    }
+                });
+
+                let ongoingActiveId = "";
+                document.querySelectorAll("section.app-section").forEach(section => {
+                    if (currentScrollTop >= section.offsetTop - 150) { ongoingActiveId = section.getAttribute("id"); }
+                });
+                
+                if (ongoingActiveId) {
+                    navLinks.forEach(link => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href") === `#${ongoingActiveId}`) { link.classList.add("active"); }
+                    });
+                    bottomNavLinks.forEach(link => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("onclick").includes(ongoingActiveId)) { link.classList.add("active"); }
+                    });
+                }
+            };
+            window.addEventListener("scroll", scrollRevealHandler);
+
+            const cursorGlow = document.getElementById("cursor-glow");
+            window.addEventListener("mousemove", (e) => {
+                cursorGlow.style.opacity = "1"; cursorGlow.style.left = e.clientX + "px"; cursorGlow.style.top = e.clientY + "px";
+            });
+            window.addEventListener("mouseleave", () => cursorGlow.style.opacity = "0");
+
+            document.getElementById("theme-toggle-btn").addEventListener("click", () => {
+                const rootDoc = document.documentElement;
+                rootDoc.setAttribute("data-theme", rootDoc.getAttribute("data-theme") === "light" ? "dark" : "light");
+            });
+
+            const targetDate = new Date("Jun 21, 2026 08:00:00").getTime();
+            setInterval(() => {
+                const diff = targetDate - new Date().getTime();
+                if (diff > 0) {
+                    document.getElementById("timer-days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                    document.getElementById("timer-hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                    document.getElementById("timer-minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                    document.getElementById("timer-seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+                }
+            }, 1000);
+
+            const rsvpForm = document.getElementById("wedding-rsvp-form");
+            const boardWrapper = document.getElementById("wishes-display-board");
+            
+            const loadWishes = () => {
+                const wishes = JSON.parse(localStorage.getItem("lux_wedding_wishes")) || [];
+                boardWrapper.innerHTML = "";
+                wishes.slice().reverse().forEach(w => {
+                    const bg = w.status === "Hadir" ? "var(--accent-gold)" : "var(--bg-surface-solid)";
+                    const txt = w.status === "Hadir" ? "#FFFFFF" : "var(--text-main)";
+                    boardWrapper.innerHTML += `<div class="wish-card-item"><div class="wish-meta-line"><span class="wish-author">${w.name}</span><span class="wish-badge" style="background:${bg}; color:${txt}; border: 1px solid var(--accent-gold);">${w.status}</span></div><p class="wish-message-body">${w.msg}</p></div>`;
+                });
+            };
+
+            rsvpForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const data = {
+                    name: document.getElementById("guest-form-name").value,
+                    status: document.getElementById("guest-form-status").value,
+                    msg: document.getElementById("guest-form-msg").value
+                };
+                if(data.name && data.status && data.msg) {
+                    const wishes = JSON.parse(localStorage.getItem("lux_wedding_wishes")) || [];
+                    wishes.push(data); localStorage.setItem("lux_wedding_wishes", JSON.stringify(wishes));
+                    rsvpForm.reset(); loadWishes();
+                }
+            });
+            loadWishes();
+        });
+    </script>
+</body>
+</html>
