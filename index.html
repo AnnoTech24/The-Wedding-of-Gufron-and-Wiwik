@@ -410,22 +410,33 @@
             const loadWishes = async () => {
                 boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; font-style: italic; color: var(--text-muted);'>Memuat doa & ucapan...</p>";
                 try {
-                    const response = await fetch(scriptURL);
+                    const fetchUrl = scriptURL + "?t=" + new Date().getTime();
+                    const response = await fetch(fetchUrl, {
+                        cache: "no-store"
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
                     const result = await response.json();
                     
                     if (result.status === 'success' && result.data && result.data.length > 0) {
                         boardWrapper.innerHTML = "";
                         result.data.slice().reverse().forEach(w => {
-                            const bg = w.status.includes("Hadir") ? "var(--accent-gold)" : "var(--bg-surface-solid)";
-                            const txt = w.status.includes("Hadir") ? "#FFFFFF" : "var(--text-main)";
-                            boardWrapper.innerHTML += `<div class="wish-card-item"><div class="wish-meta-line"><span class="wish-author">${w.name}</span><span class="wish-badge" style="background:${bg}; color:${txt}; border: 1px solid var(--accent-gold);">${w.status}</span></div><p class="wish-message-body">${w.msg}</p></div>`;
+                            const statusStr = w.status || "";
+                            const nameStr = w.name || "Tamu";
+                            const msgStr = w.msg || "";
+                            const bg = statusStr.includes("Hadir") ? "var(--accent-gold)" : "var(--bg-surface-solid)";
+                            const txt = statusStr.includes("Hadir") ? "#FFFFFF" : "var(--text-main)";
+                            boardWrapper.innerHTML += `<div class="wish-card-item"><div class="wish-meta-line"><span class="wish-author">${nameStr}</span><span class="wish-badge" style="background:${bg}; color:${txt}; border: 1px solid var(--accent-gold);">${statusStr}</span></div><p class="wish-message-body">${msgStr}</p></div>`;
                         });
                     } else {
                         boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; color:var(--text-muted);'>Belum ada ucapan, jadilah yang pertama!</p>";
                     }
                 } catch (error) {
                     console.error('Error loading wishes:', error);
-                    boardWrapper.innerHTML = "<p style='text-align:center; padding: 20px; color:red;'>Gagal memuat ucapan dari server.</p>";
+                    boardWrapper.innerHTML = `<p style='text-align:center; padding: 20px; color:red;'>Gagal memuat ucapan dari server. (${error.message})</p>`;
                 }
             };
 
